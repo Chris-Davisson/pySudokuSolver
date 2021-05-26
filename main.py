@@ -21,7 +21,8 @@ def is_filled_correctly(board):
             # Checks for empty, if it is then it can't be solved
             if board[i][j] > 9 or board[i][j] < 1:
                 return False
-
+            if not check_box(board, i, j) and not check_array(i) and not check_array(column(board, j)):
+                return False
     return True
 
 
@@ -67,6 +68,5 @@ if __name__ == '__main__':
     ]
     # printer = pprint.PrettyPrinter(width=41, compact=True)
     # printer.pprint(game)
-    print(check_box(game, 0, 0))
-    print(check_box(game, 0, 3))
+
     # print(is_solved(game))
