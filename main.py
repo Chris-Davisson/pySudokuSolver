@@ -15,13 +15,13 @@ def print_board(board):
                     print(str(board[i][j]) + " ", end="")
 
 
-def is_filled_correctly(board):
+def is_solved(board):
     for i in range(0, len(board)):
         for j in range(0, len(board[i])):
             # Checks for empty, if it is then it can't be solved
             if board[i][j] > 9 or board[i][j] < 1:
                 return False
-            if not check_box(board, i, j) and not check_array(i) and not check_array(column(board, j)):
+            if not check_box(board, i, j) and not check_array(board[i]) and not check_array(column(board, j)):
                 return False
     return True
 
@@ -46,7 +46,6 @@ def check_box(board, x, y):
     for i in range(0, 3):
         for j in range(0, 3):
             box_array.append(board[row * 3 + i][col * 3 + j])
-    print(box_array)
     return check_array(box_array)
 
 
@@ -66,7 +65,7 @@ if __name__ == '__main__':
         [1, 0, 0, 0, 0, 0, 0, 0, 0],
         [1, 0, 0, 0, 0, 0, 0, 0, 0]
     ]
-    # printer = pprint.PrettyPrinter(width=41, compact=True)
-    # printer.pprint(game)
+    printer = pprint.PrettyPrinter(width=41, compact=True)
+    printer.pprint(game)
 
-    # print(is_solved(game))
+    print(is_solved(game))
